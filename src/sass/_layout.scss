@@ -10,8 +10,8 @@ body{
     url(../assets/images/bg-pattern-top-mobile.svg),
     url(../assets/images/bg-pattern-bottom-mobile.svg);
     background-repeat: no-repeat;
-    background-size: contain;
-    background-position: top center bottom center;
+    background-size: auto;
+    background-position: center top, center bottom;
 }
 
 main{
@@ -135,14 +135,114 @@ main{
     line-height: 1.4;
 }
 
+@media only screen and (min-width:600px) and (max-width:767px){
+main{
+    max-width: calc(600px - 10vw);
+    margin-inline: auto;
+}
+}
+
+@media only screen and (min-width:768px) and (max-width:1023px){
+    main{
+        max-width: calc(600px - 10vw);
+        margin-inline: auto;
+    }
+    .intro{
+        h1{
+            font-size: clamp(1.5rem, 8vw, 3rem);
+            margin-inline: auto;
+        }
+        p{
+            font-size: clamp(.75rem, 2.5vw, 1.25rem);
+            max-width: 40ch;
+        }
+    }
+    .ratings{
+        padding-block: 3rem;
+    }
+    .rating{
+        max-width: 70%;
+        p{
+            font-size: clamp(1rem, 4vw, 1.5rem);
+        }
+    }
+    .testimonial{
+        
+        p{
+            font-size: clamp(1rem, 2.25vw, 1.25rem);
+        }
+    }
+}
+
+@media only screen and (min-width:1024px){
+    main{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        margin-inline: 5vw;
+        margin-block: auto;
+        gap: 2rem;
+        
+    }
+    .intro{
+        grid-row: 1;
+        grid-column: 1;
+        text-align: left;
+        h1{
+            font-size: clamp(1.5rem, 5vw, 3rem);
+        }
+        p{
+            margin:0;
+            font-size: clamp(1rem, 1.75vw, 1.5rem);
+        }
+    }
+
+    .ratings{
+        grid-column: 2;
+        grid-row: 1;
+       
+    }
+    .rating{
+        p{
+            font-size: clamp(1rem, 1.75vw, 1.75rem);
+        }
+    }
+    
+    .testimonials{
+        grid-column: span 2;
+        grid-row: 2;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 2rem;
+    }
+    .testimonial{
+       
+    }
+    .quote{
+        font-size: clamp(1rem, 1.75vw, 1.5rem);
+    }
+}
+
+
 
 @media only screen and (min-width:1440px){
+    body{
+        background-image:
+        url(../assets/images/bg-pattern-top-desktop.svg),
+        url(../assets/images/bg-pattern-bottom-desktop.svg);
+        background-repeat: no-repeat;
+        background-size:auto;
+        background-position: center top, center bottom;
+    }
     main{
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr;
         margin-inline: 10vw;
         margin-block: auto;
+        gap: 2rem;
+        
     }
     .intro{
         grid-row: 1;
@@ -160,16 +260,59 @@ main{
     .ratings{
         grid-column: 2;
         grid-row: 1;
-        
+       
+    }
+    .rating{
+        flex-direction: row;
+        width: 80%;
+        padding: 1rem;
+        justify-content: space-evenly;
+        p{
+            font-size: clamp(0.75rem, 1.125vw, 1.5rem);
+            margin-inline: 0;
+            flex-grow: 1;
+            text-align: left;
+            margin-left: 2rem;
+        }
+        &:last-of-type{
+            transform: translateX(10%);
+        }
+        &:first-of-type{
+            transform: translateX(-10%);
+        }
+    }
+    .stars{
+        width: fit-content;
+        margin-left: 1rem;
+       
     }
     .testimonials{
         grid-column: span 2;
         grid-row: 2;
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
+        gap: 2rem;
+    }
+    .testimonial{
+        width: calc(33% - 2rem);
+        &:first-of-type{
+            transform: translateY(-10%);
+        }
+        &:last-of-type{
+            transform: translateY(10%);
+        }
+    }
+    .name{
+        p:first-of-type{
+            font-size: clamp(.75rem, 1.25vw, 2rem);
+        }
+        p:last-of-type{
+            font-size: clamp(.75rem, 1.25vw, 2rem);
+        }
     }
     .quote{
-        font-size: clamp(.75rem, 1.5vw, 1.75rem);
+        font-size: clamp(.75rem, 1.25vw, 1.75rem);
         line-break: strict;
         max-width: 25ch;
     }
